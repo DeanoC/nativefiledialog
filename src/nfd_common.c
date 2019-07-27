@@ -8,6 +8,7 @@
 #include <assert.h>
 #include <string.h>
 #include "nfd_common.h"
+#include "al2o3_memory/memory.h"
 
 static char g_errorstr[NFD_MAX_STRLEN] = {0};
 
@@ -43,7 +44,7 @@ void NFD_PathSet_Free( nfdpathset_t *pathset )
 
 void *NFDi_Malloc( size_t bytes )
 {
-    void *ptr = malloc(bytes);
+    void *ptr = MEMORY_MALLOC(bytes);
     if ( !ptr )
         NFDi_SetError("NFDi_Malloc failed.");
 
@@ -52,8 +53,7 @@ void *NFDi_Malloc( size_t bytes )
 
 void NFDi_Free( void *ptr )
 {
-    assert(ptr);
-    free(ptr);
+    MEMORY_FREE(ptr);
 }
 
 void NFDi_SetError( const char *msg )
