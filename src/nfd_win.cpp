@@ -393,12 +393,14 @@ nfdresult_t NFD_OpenDialog( const nfdchar_t *filterList,
     // Build the filter list
     if ( !AddFiltersToDialog( fileOpenDialog, filterList ) )
     {
+				NFDi_SetError("Could not build the filter list.");
         goto end;
     }
 
     // Set the default path
     if ( !SetDefaultPath( fileOpenDialog, defaultPath ) )
     {
+				NFDi_SetError("Could not set the default path.");
         goto end;
     }    
 
