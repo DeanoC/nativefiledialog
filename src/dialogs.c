@@ -12,7 +12,6 @@ AL2O3_EXTERN_C bool NativeFileDialogs_Load(char const *filterList,
 		return false;
 	}
 	if(result == NFD_CANCEL) {
-		MEMORY_FREE(outPath);
 		*outPath = NULL;
 	}
 
